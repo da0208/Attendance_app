@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>勤怠アプリ</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 1em;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        label {
+            display: block;
+            margin-top: 1em;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: .5em;
+            margin-top: .5em;
+        }
+        input[type="submit"] {
+            margin-top: 1em;
+            padding: .5em 1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>勤怠アプリ</h1>
+
+    <form method="POST">
+        <label for="name">名前:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="type">タイプ:</label><br>
+        <select id="type" name="type">
+            <option value="Clock In">出勤</option>
+            <option value="Clock Out">退勤</option>
+        </select><br>
+        <input type="submit" name="submit" value="送信">
+        <input type="submit" name="delete" value="削除">
+    </form>
+
+    <h2>勤怠データ</h2>
+    {% for row in data %}
+        <p>名前: {{ row[0] }}, 時間: {{ row[1] }}, タイプ: {{ row[2] }}</p>
+    {% endfor %}
+</body>
+</html>
